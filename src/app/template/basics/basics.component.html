@@ -1,0 +1,83 @@
+<h2>Template: Basics</h2>
+
+<div class="row">
+    <div class="col">
+        
+        <form 
+            (ngSubmit)="save()"
+            #myForm="ngForm"
+            autocomplete="off">
+            <!-- Field Product-->
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">Products</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                            [ngModel]="initForm.product"
+                            name="products"
+                            class="form-control"
+                            placeholder="Product name"
+                            required
+                            minlength="3">
+                    <span *ngIf="productValue()" class="form-text text-danger">Must contain three letters</span>
+                </div>
+            </div>
+
+            <!--Field Price-->
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">Price</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                            [ngModel]="initForm.price"
+                            name="price"
+                            class="form-control"
+                            required
+                            customDir
+                            [minimo]="0"
+                            placeholder="Product price">
+                            <span *ngIf="priceValue()" class="form-text text-danger">Price must be greater than 0</span>
+                </div>
+            </div>
+
+                <!--Field stock-->
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label">Stock</label>
+                    <div class="col-sm-9">
+                        <input type="number"
+                                [ngModel]="initForm.stock"
+                                name="stock"
+                                class="form-control"
+                                placeholder="Product stock"
+                                customDir
+                                [minimo]="0"
+                                required>
+                                <span *ngIf="stockValue()" class="form-text text-danger">Stock must be greater than 0</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button [disabled]="myForm?.invalid" type="submit" class="btn btn-success float-end">Success</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre> {{ myForm.valid }}</pre>
+       
+        <span>Pristine</span>
+        <p>Indicates whether or not the initial values ​​of the form have been changed.</p>
+        <pre> {{ myForm.pristine }}</pre>
+
+        <span>Touched</span>
+        <p>indicates if the form has been touched.</p>
+        <pre> {{ myForm.touched }}</pre>
+
+        <span>Value</span>
+        <pre> {{ myForm.value | json }}</pre>
+        
+    </div>
+</div>

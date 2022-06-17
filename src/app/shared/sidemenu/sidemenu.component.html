@@ -1,0 +1,21 @@
+<h3>Template</h3>
+<hr>
+<ul *ngFor="let path of templateRoutes" class="list-group">
+    <li 
+        [routerLink]="path.path"
+        class="list-group-item" 
+        routerLinkActive="active">
+        {{ path.text }}
+    </li>
+</ul>
+<h3 class="mt-3">Reactive</h3>
+<hr>
+<ul *ngFor="let path of reactiveRoutes" class="list-group">
+    <li 
+        [routerLink]="path.path"
+        class="list-group-item" 
+        routerLinkActive="active">
+        {{ path.text }}
+    </li>
+</ul>
+
