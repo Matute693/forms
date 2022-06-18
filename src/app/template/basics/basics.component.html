@@ -18,7 +18,9 @@
                             placeholder="Product name"
                             required
                             minlength="3">
-                    <span *ngIf="productValue()" class="form-text text-danger">Must contain three letters</span>
+                            <div class="h-10">
+                                <span *ngIf="productValue()" class="form-text text-danger">Must contain three letters</span>
+                            </div>
                 </div>
             </div>
 
@@ -34,7 +36,9 @@
                             customDir
                             [minimo]="0"
                             placeholder="Product price">
-                            <span *ngIf="priceValue()" class="form-text text-danger">Price must be greater than 0</span>
+                            <div class="h-10">
+                                <span *ngIf="priceValue()" class="form-text text-danger">Price must be greater than 0</span>
+                            </div>
                 </div>
             </div>
 
@@ -50,7 +54,9 @@
                                 customDir
                                 [minimo]="0"
                                 required>
-                                <span *ngIf="stockValue()" class="form-text text-danger">Stock must be greater than 0</span>
+                                <div class="h-10">
+                                    <span *ngIf="stockValue()" class="form-text text-danger">Stock must be greater than 0</span>
+                                </div>
                     </div>
                 </div>
 

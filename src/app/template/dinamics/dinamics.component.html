@@ -1,1 +1,87 @@
-<p>dinamics works!</p>
+<h2>Template <small>Dinamics</small></h2>
+<hr>
+<!-- Name -->
+<form 
+    #myForm="ngForm"
+    (ngSubmit)="save()"
+    autocomplete="off">
+    <div class="row mb-2">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+            <input 
+                class="form-control"
+                [ngModel]="user.name"
+                name="name"
+                type="text"
+                required
+                min="1"
+                placeholder="Name">
+                <div class="h-10">
+                    <span 
+                        *ngIf="myForm!.controls['name']?.invalid 
+                        && myForm!.controls['name']?.touched"
+                        class="text-danger form-text">
+                        This field is required
+                    </span>
+                </div>
+        </div>
+    </div>
+    
+        <!-- Add -->
+        <div class="row mb-4">
+            <label class="col-sm-3 col-form-label">Add</label>
+            <div class="col-sm-9">
+                <div
+                    class="input-group">
+                    <input 
+                        name="items"
+                        [(ngModel)]="item"
+                        (keyup.enter)="add()"
+                        name="item"
+                        class="form-control"
+                        placeholder="Add">
+                    <button
+                        (click)="add()"
+                        class="btn btn-outline-primary"
+                        type="button"
+                        >Add</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add -->
+        <div class="row mb-4">
+            <label class="col-sm-3 col-form-label">Favorites</label>
+            <div class="col-sm-9">
+                <div 
+                    *ngFor="let fav of user.favorities; let i = index"
+                    class="input-group mb-3">
+                    <input 
+                        [(ngModel)]="fav.name"
+                        class="form-control"
+                        name="favotities_{{i}}"
+                        placeholder="Add"
+                        required>
+                        <button 
+                            (click)="deleted(i)"
+                            type="button"
+                            class="btn btn-outline-danger">
+                            Delete
+                        </button>
+                </div>
+            </div>
+        </div>
+
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <button 
+                class="btn btn-primary float-end"
+                type="button"
+                [disabled]="myForm.invalid"
+                (click)="save()">Save</button>
+        </div>
+    </div>
+</form>
+
+<span>Person</span>
+<pre>{{ user | json}}</pre>
