@@ -1,1 +1,86 @@
-<p>dinamics works!</p>
+<h2>Template <small>Dinamics</small></h2>
+<hr>
+<!-- Name -->
+<form 
+    [formGroup]="myForm"
+    (ngSubmit)="save()"
+    autocomplete="off">
+    <div class="row mb-2">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+            <input 
+                class="form-control"
+                formControlName="name"
+                type="text"
+                placeholder="Name">
+                <div class="h-10">
+                    <span *ngIf="invalidField('name')" class="text-form text-danger">
+                        This field is required
+                    </span>
+                </div>
+        </div>
+    </div>
+    
+        <!-- Add -->
+        <div class="row mb-4">
+            <label class="col-sm-3 col-form-label">Add</label>
+            <div class="col-sm-9">
+                <div
+                    class="input-group">
+                    <input 
+                        class="form-control"
+                        [formControl]="newItem"
+                        (keyup.enter)="add()"
+                        placeholder="Add">
+                    <button
+                        (click)="add()"
+                        class="btn btn-outline-primary"
+                        type="button">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add -->
+        <div class="row mb-4">
+            <label class="col-sm-3 col-form-label">Favorites</label>
+            <div class="col-sm-9" formArrayName="favorities">
+                <div 
+                    class="input-group mb-3"
+                    *ngFor="let item of itemArr.controls; let i = index">
+                    <input 
+                        class="form-control"
+                        [formControlName]="i">
+
+                        <button 
+                            type="button"
+                            (click)="deleted(i)"
+                            class="btn btn-outline-danger">
+                            Delete
+                        </button>
+                </div> 
+            </div>
+        </div>
+
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <button 
+                class="btn btn-primary float-end"
+                type="submit"
+                >Save</button>
+        </div>
+    </div>
+</form>
+
+<span>Valid</span>
+<pre>{{ myForm.valid }}</pre>
+
+<span>Value</span>
+<pre>{{ myForm.value | json }}</pre>
+
+<span>Form control Value</span>
+<pre>{{ newItem.value| json}}</pre>
+
+<span>Form control valid</span>
+<pre>{{ newItem.valid| json}}</pre>

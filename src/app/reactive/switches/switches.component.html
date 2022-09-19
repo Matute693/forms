@@ -1,1 +1,119 @@
-<p>switches works!</p>
+<h2>Reactive <small>Switches</small></h2>
+<hr>
+
+<form 
+  [formGroup]="myForm"
+  (submit)="save()">
+
+    <!-- Radio -->
+    <div class="row mb-4">
+        <div class="col-sm-3">
+            <label> Radio</label>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-check">
+              <input 
+                class="form-check-input"
+                formControlName="gender"
+                type="radio"
+                value="M"
+                id="male"
+                required>
+              <label class="form-check-label" for="male">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input 
+                formControlName="gender"
+                class="form-check-input"
+                type="radio"
+                value="F"
+                id="female"
+                required>
+              <label class="form-check-label" for="female">
+                Female
+              </label>
+            </div>
+            <span 
+                class="form-text text-warning"> 
+                Select gender
+            </span>
+        </div>
+    </div>
+
+    <!-- Switch -->
+    <div class="row mb-4">
+        <div class="col-sm-3">
+            <label class="col-form-label">Notifications</label>
+        </div>
+        <div class="col-sm-9 form-check mt-2 form-switch">
+          <input 
+              class="form-check-input" 
+              type="checkbox" 
+              role="switch"
+              formControlName="notifications"
+              id="flexSwitchCheckChecked" 
+              >
+          <label class="form-check-label" for="flexSwitchCheckChecked">I want to receive notifications</label>
+        </div>
+    </div>
+
+    <!-- Checkbox-->
+    <div class="row mb-4">
+        <div class="col-sm-3">
+            <label> Checkbox</label>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input 
+                    class="form-check-input"
+                    type="checkbox"
+                    formControlName="terms"
+                    required
+                    value="" 
+                    id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Terms and conditions
+                </label>
+              </div>
+              <span class="form-text text-danger"> 
+                You must accept the terms </span>
+        </div>
+    </div>
+
+
+
+      <div class="row">
+          <div class="col">
+              <button 
+                class="btn btn-success float-end"
+                type="submit">
+                Send and Save
+              </button>
+          </div>
+      </div>
+
+
+
+</form>
+
+
+<h4>Form values</h4>
+<pre> {{ myForm.value | json }}</pre>
+<br>
+
+<h4>Form valid</h4>
+<pre> {{ myForm.valid | json }}</pre>
+
+<h4>Person</h4>
+<pre> {{ user | json }} </pre>
+<br>
+
+<!-- <h4>Errors</h4>
+<pre> {{ myForm.controls['terms']?.errors| json }} </pre>
+<br>
+
+<pre>Conditions:  {{term | json}}</pre>  -->
+
+

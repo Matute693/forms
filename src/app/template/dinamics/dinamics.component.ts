@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { User, Favs } from './interfaces/dinamics.interface';
-import { NgForm } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dinamics',
@@ -9,14 +9,13 @@ import { NgForm } from '@angular/forms';
   ]
 })
 export class DinamicsComponent {
+
+  @ViewChild('myForm') myForm!: FormGroup;
   public item: string = '' 
 
   public user: User = {
-    name: 'Matias',
-    favorities: [
-      { id: 1, name: 'Wood'},
-      { id: 2, name: 'Metal'}
-    ]
+    name: '',
+    favorities: []
   }
   
   deleted(index: number) {
@@ -33,7 +32,7 @@ export class DinamicsComponent {
   }
 
   save():void {
-    console.group('Save');
+    console.group('Save', this.myForm.value);
   }
 
 
