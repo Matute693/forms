@@ -6,4 +6,5 @@ Remember to rebuild the node modules with the command npm init
 
 Site deployed
 
-https://angularformsdemo.netlify.app/template/basics
+https://angularformsdemo.netlify.app
+
