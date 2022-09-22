@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItem } from '../interfaces/menu.interface';
 
 @Component({
@@ -34,6 +34,17 @@ export class SidemenuComponent {
     {
       text: 'Switches',
       path: 'reactive/switches'
+    }
+  ];
+
+  public authMenu: MenuItem[] = [
+    {
+      text: 'Register',
+      path: 'auth/register'
+    },
+    {
+      text: 'Login',
+      path: 'auth/login'
     }
   ]
 }

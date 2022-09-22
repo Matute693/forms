@@ -1,0 +1,121 @@
+
+<div class="row">
+    <div class="col">
+        <h2>Reactive Validations</h2>
+        <hr>
+        
+
+        <form autocomplete="off" 
+              [formGroup]="myForm"    
+              (ngSubmit)="submitForm()">
+            <!--Name-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label" for="">Name</label>
+                <div class="col-sm-9">
+                    <input  type="text"
+                            class="form-control"
+                            formControlName="name" 
+                            placeholder="User name">
+                    <span *ngIf="fieldNovalid('name')" class="form-text text-danger">
+                        Must be in first and last name format.
+                    </span>
+                </div>
+            </div>
+
+            <!--Email-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label" for="">Email</label>
+                <div class="col-sm-9">
+                    <input  type="email"
+                            class="form-control"
+                            formControlName="email"
+                            placeholder="Email">
+                    <span *ngIf="fieldNovalid('email')" class="form-text text-danger">
+                       {{ emailErrorMessage }}
+                    </span>
+                </div>
+            </div>
+            
+             <!--Username-->
+             <div class="row mb-3">
+                <label class="col-sm-3 col-form-label" for="">Username</label>
+                <div class="col-sm-9">
+                    <input  type="text"
+                            class="form-control"
+                            formControlName="username"
+                            placeholder="Username">
+                    <span *ngIf="fieldNovalid('username')" class="form-text text-danger">
+                        Username cannot be strider.
+                    </span>
+                </div>
+            </div>
+
+              <!--Password-->
+              <div class="row mb-3">
+                <label class="col-sm-3 col-form-label" for="">Password</label>
+                <div class="col-sm-9">
+                    <input  type="password"
+                            class="form-control"
+                            formControlName="password"
+                            placeholder="Password">
+                    <span *ngIf="fieldNovalid('password')" class="form-text text-danger">
+                        The password must be greater than 6 characters.
+                    </span>
+                </div>
+            </div>
+
+             <!--Password2-->
+             <div class="row mb-3">
+                <label class="col-sm-3 col-form-label" for="">Confirm Password</label>
+                <div class="col-sm-9">
+                    <input  type="password"
+                            class="form-control"
+                            formControlName="confirmPassword"
+                            placeholder="Confirm Password">
+                    <span *ngIf="fieldNovalid('confirmPassword')" class="form-text text-danger">
+                        Passwords must be the same.
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <!-- pending false le habilito el boton enviar si
+                        pending es true le desabilito el boton -->
+                    <button 
+                        class="btn btn-primary float-end"
+                        [disabled]="myForm.pending"
+                        type="submit">
+                        Create
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="col-12">
+    <h2>Form Valid: {{ myForm.valid }}</h2>
+    <h2>Form Status: {{ myForm.status }}</h2>
+    <!-- Me da la respuesta pending false le habilito el boton enviar si pending es true le desabilito el boton -->
+    <h2>Form pending: {{ myForm.pending }}</h2>  
+    <h2>Form errors</h2>
+    <pre>{{myForm.errors | json}}</pre>
+    
+    <h5>Name</h5>
+    <pre> {{ myForm.controls['name'].errors | json }}</pre>
+    
+    <h5>Email</h5>
+    <pre> {{ myForm.controls['email'].errors | json }}</pre>
+    
+    <h5>Username</h5>
+    <pre> {{ myForm.controls['username'].errors | json }}</pre>
+    
+    <h5>Password</h5>
+    <pre> {{ myForm.controls['password'].errors | json }}</pre>
+    
+    
+    <h5>Confirm password</h5>
+    <pre> {{ myForm.controls['confirmPassword'].errors | json }}</pre>
+</div>
