@@ -7,7 +7,6 @@ Remember to rebuild the node modules with the command ``` npm install ```
 A local database called json-server is used, the database is mocked in the db.json file
 Documentation https://www.npmjs.com/package/json-server
 
-install it ``` npm i json-server ```
 run ```json-server --watch db.json```
 
 Site deployed
